@@ -18,6 +18,7 @@ export const SearchPokemon = () => {
         limitDefault: 1281
     })
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         setPokemonList(pokemons?.results ?? [])
     },)
@@ -41,7 +42,7 @@ export const SearchPokemon = () => {
   
     // Método para manejar los cambios en el valor del input
     const onChange = (
-        event: React.FormEvent<any>,
+        _: React.FormEvent<unknown>,
         { newValue }: Autosuggest.ChangeEvent
       ): void => {
         setValue(newValue);
@@ -49,7 +50,7 @@ export const SearchPokemon = () => {
   
     // Método para manejar la selección de una sugerencia de autocompletado
     const onSuggestionSelected = (
-        event: React.FormEvent<any>,
+        _: React.FormEvent<unknown>,
         { suggestion }: SuggestionSelectedEventData<Pokemon>
       ): void => {
         setValue(suggestion.name);

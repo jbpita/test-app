@@ -1,23 +1,13 @@
-import { Home } from "./layouts/Home"
+import { Home } from "./layouts/Home";
 import './index.css';
 import { PokemonProvider } from "./context/PokemonContext";
 
 function App() {
-
-  const AppState = ({children}: any) => {
-    return  (
-        <PokemonProvider>
-          {children}
-        </PokemonProvider>
-      );
-  };
   return (
-    <>
-      <AppState>
-        <Home/>
-      </AppState>
-    </>
-  )
+    <PokemonProvider>
+      <Home/>
+    </PokemonProvider>
+  );
 }
 
-export default App
+export default App;
