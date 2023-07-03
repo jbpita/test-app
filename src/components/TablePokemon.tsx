@@ -28,10 +28,7 @@ export const TablePokemon = () => {
         updateCurrentlyPokemon(pokemon)
     }
 
-    const handleSearch = (pokemonName: string) => {
-        // Aquí puedes implementar la lógica para buscar y mostrar el Pokémon seleccionado
-        console.log(`Buscar Pokémon: ${pokemonName}`);
-    }
+
 
     const renderPageNumbers = () => {
         if (!pokemons) {
@@ -47,10 +44,10 @@ export const TablePokemon = () => {
                 <li key={i}>
                     <button
                     onClick={() => goToPage(i + 1)}
-                    className={`btn px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 ${
+                    className={`btn px-3 py-2 leading-tight text-gray-500 bg-blue-400 border border-gray-300 ${
                         i + 1 === currentPage
-                        ? 'bg-blue-400 text-white'
-                        : 'hover:bg-blue-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
+                        ? 'bg-sky-700 text-white'
+                        : 'hover:bg-sky-700 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
                     }`}
                     >
                     {i + 1}
@@ -82,10 +79,10 @@ export const TablePokemon = () => {
                 <li key={pageNumber}>
                 <button
                     onClick={() => goToPage(pageNumber)}
-                    className={`btn px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 ${
+                    className={`btn px-3 py-2 leading-tight text-gray-500 bg-blue-400 border border-gray-300 ${
                     pageNumber === currentPage
-                    ? 'bg-blue-400 text-white'
-                    : 'hover:bg-blue-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
+                    ? 'bg-sky-700 text-white'
+                    : 'hover:bg-sky-700 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
                     }`}
                 >
                     {pageNumber}
@@ -100,26 +97,23 @@ export const TablePokemon = () => {
     return (
         <div className="flex flex-col justify-center">
         <h1 className="text-center text-xl font-bold mt-2">Lista de Pokemons</h1>
-        <SearchPokemon onSearch={handleSearch} />
+        <SearchPokemon/>
         <table className="table-fixed">
             <thead>
-            <tr>
-                <div className="grid grid-cols-2 gap-2">
+            <tr className="grid grid-cols-2 gap-2">
                 <th>#</th>
                 <th>name</th>
-                </div>
             </tr>
             </thead>
             <tbody>
             {pokemons?.results.map((value, index) => (
-                <tr key={index}>
-                <div
-                 className="grid grid-cols-2 gap-2 text-center border border-sky-950 rounded  divide-x mt-2 mx-2 py-2 hover:bg-sky-700 active:bg-sky-800 focus:outline-none focus:ring focus:bg-sky-300"
-                 onClick={() => selectPokemon(value)} 
+                <tr 
+                    key={index}
+                    className="grid grid-cols-2 gap-2 text-center border border-sky-950 rounded  divide-x mt-2 mx-2 py-2 hover:bg-sky-700 active:bg-sky-800 focus:outline-none focus:ring focus:bg-sky-300"
+                    onClick={() => selectPokemon(value)} 
                 >
                     <td>{ index + offset + 1 }</td>
                     <td>{ value.name }</td>
-                </div>
                 </tr>
             ))}
             </tbody>

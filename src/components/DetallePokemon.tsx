@@ -22,22 +22,24 @@ export const DetallePokemon = () => {
   }
 
   useEffect(() => {
-    const numberPokemon = currentlyPokemon?.url.split("/").filter(Boolean).pop();
+    const numberPokemon = currentlyPokemon?.url.split("/").filter(Boolean).pop()
     setImageUrl(url+numberPokemon+".png")
     getDetailPokemon(Number(numberPokemon))
-    console.log(pokemonDetails)
   }, [currentlyPokemon])
   
   return (
     <div className="flex flex-col items-center justify-center container md:mx-5 mt-20 border bg-sky-700 border-sky-950 rounded">
       <div className="mb-5">
-        <img
-          src={imageUrl}
-          alt={currentlyPokemon?.name}
-          width={200}
-          height={200}
-          className="rounded-full border border-sky-950 bg-slate-50 mt-2"
-        />
+        { pokemonDetails && (
+            <img
+              src={imageUrl}
+              alt={currentlyPokemon?.name}
+              width={200}
+              height={200}
+              className="rounded-full border border-sky-950 bg-slate-50 mt-2"
+            />
+          )
+        }
       </div>
       <div className="mb-5">
         <div className="card-body text-cyan-5">

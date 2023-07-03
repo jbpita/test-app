@@ -5,11 +5,7 @@ import '../styles/SearchPokemon.css'
 import { usePokemons } from '../hooks/usePokemons';
 import { PokemonContext } from '../context/PokemonContext';
 
-interface SearchPokemonProps {
-    onSearch: (pokemonName: string) => void
-}
-
-export const SearchPokemon = ({ onSearch}: SearchPokemonProps) => {
+export const SearchPokemon = () => {
     const [value, setValue] = useState('')
     const [pokemonList, setPokemonList] = useState<Pokemon[]>([])
     const [suggestions, setSuggestions] = useState<Pokemon[]>([])
@@ -57,7 +53,6 @@ export const SearchPokemon = ({ onSearch}: SearchPokemonProps) => {
         { suggestion }: SuggestionSelectedEventData<Pokemon>
       ): void => {
         setValue(suggestion.name);
-        onSearch(suggestion.name);
         updateCurrentlyPokemon(suggestion)
       };
   
